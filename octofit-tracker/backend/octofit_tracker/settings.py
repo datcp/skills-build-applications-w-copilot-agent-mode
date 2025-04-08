@@ -1,3 +1,5 @@
+import secrets
+
 DATABASES = {
     "default": {
         "ENGINE": "djongo",
@@ -18,7 +20,14 @@ INSTALLED_APPS = [
     'djongo',
     'corsheaders',
     'octofit_tracker',
+    'octofit_app',
 ]
+
+# Regenerate the SECRET_KEY
+SECRET_KEY = secrets.token_urlsafe(50)
+
+# Enable Django's debug mode
+DEBUG = True
 
 # Enable CORS
 CORS_ALLOW_ALL_ORIGINS = True
@@ -36,7 +45,7 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
 ]
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'probable-robot-4w669rvv6q9fj5p6-8000.app.github.dev']
 
 TEMPLATES = [
     {
@@ -65,3 +74,8 @@ MIDDLEWARE = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ROOT_URLCONF = 'octofit_tracker.urls'
+
+# Define the URL to access static files
+STATIC_URL = '/static/'
